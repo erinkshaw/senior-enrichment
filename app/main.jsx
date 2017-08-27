@@ -4,11 +4,11 @@ import {render} from 'react-dom'
 import { Provider } from 'react-redux'
 
 import store from './store'
-import Root from './components/Root'
+import AllCampuses from './components/AllCampuses'
 
-render (
-  <Provider store={store}>
-    <Root/>
-  </Provider>,
+render(
+  // <Provider store={store}>
+    <AllCampuses />,
+  // </Provider>,
   document.getElementById('main')
 )
