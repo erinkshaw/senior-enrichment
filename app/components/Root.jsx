@@ -1,4 +1,18 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
+import AllCampuses from './AllCampuses'
+import store, { fetchCampuses } from '../store'
+
+export default class Main extends Component {
+  componentDidMount () {
+    const campusesThunk = fetchCampuses();
+    // const studentsThunk = fetchStudents();
+    store.dispatch(campusesThunk);
+    // store.dispatch(studentsThunk);
+  }
+  render() {
+    return (<AllCampuses />)
+  }
+}
 
 // export default class WinterJokes extends Component {
 //   constructor() {

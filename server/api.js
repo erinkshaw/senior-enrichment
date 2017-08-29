@@ -35,8 +35,6 @@ api.get('/campuses/:campusId/students', (req, res) => {
 	.catch(console.error)
 })
 
-
-
 api.get('/students', (req, res) => {
 	Student.findAll()
 	.then( students => res.json(students))
@@ -45,9 +43,7 @@ api.get('/students', (req, res) => {
 
 api.get('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
-	Student.findOne({where: {
-		id
-	}})
+	Student.findById(id)
 	.then( student => res.json(student) )
 	.catch(console.error)
 })
@@ -58,6 +54,31 @@ api.post('/campuses/:campusId/', (req, res) => {
 	.catch(console.error)
 })
 
+api.post('/campuses/', (req, res) => {
+	Campus.create(req.body)
+	.then( campus => res.json(campus) )
+	.catch(console.error)
+})
+
+api.put('/campuses/:campusId', (req, res) => {
+	const id = req.params.campusId
+	Campus.update(req.body, {where: {id}, returning: true })
+	.then(console.log('update successful'))
+})
+
+api.put('/campuses/:campusId', (req, res) => {
+	const id = req.params.campusId
+	Campus.update(req.body, {where: {id}, returning: true })
+	.then(console.log('update successful'))
+})
+
+api.put('/students/:studentId', (req, res) => {
+	const id = req.params.studentId
+	Student.update(req.body, {where: {id}, returning: true })
+	.then(console.log('update successful'))
+})
+
+
 api.delete('/campuses/:campusId/:studentId', (req, res) => {
 	const id = req.params.studentId
 	Student.destroy({where: {
@@ -65,6 +86,12 @@ api.delete('/campuses/:campusId/:studentId', (req, res) => {
 	}})
 })
 
+api.delete('/campuses/:campusId/', (req, res) => {
+	const id = req.params.campusId
+	Campus.destroy({where: {
+		id
+	}})
+})
 
 
 //use this if you wan't to make your code more modular:
