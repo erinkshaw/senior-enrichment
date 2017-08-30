@@ -2,13 +2,13 @@
 import React from 'react'
 import {render} from 'react-dom'
 import { Provider } from 'react-redux'
-import Root from './components/Root'
+import Main from './components/Root'
 import store from './store'
 // import AllCampuses from './components/AllCampuses'
 
 render(
   <Provider store={store}>
-    <Root />
+    <Main />
   </Provider>,
   document.getElementById('main')
 )

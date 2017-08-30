@@ -14,14 +14,14 @@ Student.belongsTo(Campus)
 
 // var data = {
 //   student: [
-//     {name: "Erin"},
-//     {name: "Kimberly"},
-//     {name: "Gabby"},
-//     {name: "Jennifer" },
-//     {name: "Michelle"},
-//     {name: "Emily"},
-//     {name: "Erika"},
-//     {name: "Mieka"},
+//     {name: "Harry Potter", wand: "11 inch, holly, phoenix feather", campusId: 1},
+//     {name: "Ron Weasley", wand: "12 inch, ash, unicorn hair", campusId: 1},
+//     {name: "Hermione Granger", wand: "10¾ inch, vine, dragon heartstring", campusId: 1},
+//     {name: "Cho Chang", wand: "9½ inch, rosewood, Veela hair", campusId: 2},
+//     {name: "Penelope Clearwater", wand: "14 inch, willow, unicorn hair", campusId: 2},
+//     {name: "Cedric Diggory", wand: "12¼ inch, ash, unicorn hair", campusId: 3},
+//     {name: "Draco Malfoy", wand: "10 inch, hawthorn, unicorn hair", campusId: 4},
+//     {name: "Vincent Crabbe", wand: "12¾ inch, walnut, dragon heartstring", campusId: 4},
 //   ],
 //   campus: [
 //     {name: "Gryffindor", imgUrl: 'https://www.hp-lexicon.org/wp-content/uploads/2015/08/shield_01-5B1-5D.jpg'},
@@ -40,8 +40,7 @@ Student.belongsTo(Campus)
 // 	Student.create(student)
 // 	.then(
 //    (student) => {
-//     let campus = Math.ceil(Math.random()*4)
-//     student.setCampus(campus)
+// 		console.log(student)
 //   })
 // }
 // )

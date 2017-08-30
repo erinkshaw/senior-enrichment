@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 // import windowRender from './windowRender'
 import campuses from './campuses'
-
+import students from './students'
 // const initialState = {}
 
 // const rootReducer = function(state = initialState, action) {
@@ -11,8 +11,8 @@ import campuses from './campuses'
 // };
 
 const rootReducer = combineReducers({
-  campuses
-  // students,
+  campuses,
+  students
   // newCampusEntry,
   // newStudentEntry,
   // windowRender
@@ -21,3 +21,4 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 export * from './campuses';
+export * from './students';
