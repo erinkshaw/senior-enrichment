@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function OneCampus(props) {
   const campusId = props.match.params.campusId
@@ -25,9 +26,11 @@ function OneCampus(props) {
             return (
               <tr key={student.id}>
                 <td>
+                  <NavLink to={`/students/${student.id}`}>
                   <button type="button" className="close" aria-label="Close">
                     <span aria-hidden="true">+</span>
                   </button>
+                  </NavLink>
                 </td>
                 <td>{student.name}</td>
                 <td>{student.wand}</td>

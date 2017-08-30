@@ -1,8 +1,7 @@
 
 import React from 'react'
-//dont need this yet
-// import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function AllStudents(props) {
   const students = props.students
@@ -24,13 +23,16 @@ function AllStudents(props) {
           return (
             <tr key={student.id}>
               <td>
+                <NavLink to={`students/${student.id}`}>
                 <button type="button" className="close" aria-label="Close">
                   <span aria-hidden="true">+</span>
                 </button>
+                </NavLink>
               </td>
               <td>{student.name}</td>
               <td>{student.wand}</td>
-              <td><button type="button" className="close" aria-label="Close">
+              <td>
+                <button type="button" className="close" aria-label="Close" onClick={props.deleteStudent}>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </td>
@@ -50,20 +52,15 @@ const mapStateToProps = function (state) {
   };
 };
 
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    deleteStudent(event){
+      event.preventDefault();
+      console.log('DELETED!!!')
+    }
+  }
+}
 
-export default connect(mapStateToProps)(AllStudents);
 
-// <table>
-//   <tr>
-//     <th>First name</th>
-//     <th>Last name</th>
-//   </tr>
-//   <tr>
-//     <td>John</td>
-//     <td>Doe</td>
-//   </tr>
-//   <tr>
-//     <td>Jane</td>
-//     <td>Doe</td>
-//   </tr>
-// </table>
+export default connect(mapStateToProps, mapDispatchToProps)(AllStudents);
+

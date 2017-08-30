@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 
+//have buttons instead to choose between add student and add campus
+
 function SideBar(props) {
   //change to sidebar if you have time
   const campuses = props.campuses

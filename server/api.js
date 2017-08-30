@@ -79,7 +79,7 @@ api.put('/students/:studentId', (req, res) => {
 })
 
 
-api.delete('/campuses/:campusId/:studentId', (req, res) => {
+api.delete('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
 	Student.destroy({where: {
 		id
