@@ -8,5 +8,8 @@ module.exports = db.define('campus', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  imgUrl: Sequelize.STRING
+  imgUrl: {
+    type: Sequelize.STRING,
+    defaultValue: 'http://vignette1.wikia.nocookie.net/harryalbuspotter/images/4/45/Slytherin_by_melisarodriguez-d47ly0k.png/revision/latest?cb=20140621170234'
+  }
 })

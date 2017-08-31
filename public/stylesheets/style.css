@@ -19,3 +19,12 @@ sidebar {
   width: 25%;
   width: inherit;
 }
+
+.house{
+  height:200px;
+  padding: 20px
+}
+
+.house:hover {
+  height: 210px;
+}

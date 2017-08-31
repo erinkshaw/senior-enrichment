@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { removeStudent } from '../store'
+import { removeStudent, putStudent, fetchStudents } from '../store'
 
 function OneStudent(props) {
   const studentId = props.match.params.studentId
@@ -17,7 +17,7 @@ function OneStudent(props) {
       <img src={singleStudent && singleStudent.campus.imgUrl} />
       </NavLink>
       <h3>Edit Wizard</h3>
-            <form>
+            <form onSubmit={props.updateStudent}>
       <table>
         <thead>
           <tr>
@@ -34,20 +34,24 @@ function OneStudent(props) {
                   <span aria-hidden="true">&times;</span>
               </button>
             </td>
-            <td>{singleStudent && singleStudent.name}</td>
-            <td><input  value={singleStudent && singleStudent.wand}/></td>
             <td>
-              <select className="form-control" >
-                <option defaultValue>{singleStudent && singleStudent.campus.name}</option>
+              <input  defaultValue={singleStudent && singleStudent.name} name="name" />
+            </td>
+            <td>
+              <input  defaultValue={singleStudent && singleStudent.wand} name="wand" />
+            </td>
+            <td>
+              <select className="form-control" name="house" >
+                <option defaultValue id={singleStudent.campus.id}>{singleStudent && singleStudent.campus.name}</option>
                 {campuses.map( campus => {
                   if (singleStudent && campus.name !== singleStudent.campus.name) {
-                    return <option key={campus.id}>{campus.name}</option>
+                    return <option key={campus.id} id={campus.id}>{campus.name}</option>
                   }
                   })}
               </select>
             </td>
             <td>
-              <button type="button" className="btn btn-outline-danger"> Submit</button>
+              <button type="submit" className="btn btn-outline-danger"> Submit</button>
             </td>
           </tr>
         </tbody>
@@ -63,14 +67,24 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps, state) => {
   return {
     deleteStudent(event){
       const studentId = ownProps.match.params.studentId
       event.preventDefault();
       dispatch(removeStudent(studentId))
-      console.log('DELETED!!!')
+      dispatch(fetchStudents())
       ownProps.history.push('/students')
+    },
+    updateStudent(event){
+      const id = ownProps.match.params.studentId
+      const name = event.target.name.value
+      const wand = event.target.wand.value
+      const house = event.target.house.value
+      event.preventDefault()
+      dispatch(putStudent({id, name, wand}))
+      // dispatch(fetchStudents())
+      console.log('success?')
     }
   }
 }

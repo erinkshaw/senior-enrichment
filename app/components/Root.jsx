@@ -4,6 +4,8 @@ import AllCampuses from './AllCampuses'
 import AllStudents from './AllStudents'
 import OneCampus from './OneCampus'
 import OneStudent from './OneStudent'
+import AddStudent from './AddStudent'
+import AddCampus from './AddCampus'
 import NavBar from './NavBar'
 import SideBar from './SideBar'
 import store, { fetchCampuses, fetchStudents } from '../store'
@@ -25,11 +27,18 @@ export default class Main extends Component {
               <Route exact path="/students" component={AllStudents} />
               <Route exact path="/" component={AllCampuses} />
               <Route path="/campuses/:campusId" component={OneCampus} />
+              <Route exact path="/campuses" component={AllCampuses} />
               <Route path="/students/:studentId" component={OneStudent} />
             </Switch>
           </div>
           <div className="col-xs-2">
-            {/* <SideBar /> */}
+            <footer>
+              <Switch>
+                  <Route exact path="/" component={SideBar} />
+                  <Route path="/AddStudent" component={AddStudent} />
+                  <Route path="/AddCampus" component={AddCampus} />
+                </Switch>
+            </footer>
           </div>
         </div>
       </Router>

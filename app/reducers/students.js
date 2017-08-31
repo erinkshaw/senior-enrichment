@@ -5,6 +5,7 @@ import axios from 'axios';
 const GET_STUDENTS = 'GET_STUDENTS'
 const GET_STUDENT = 'GET_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
+const UPDATE_STUDENT = 'UPDATE_STUDENT'
 
 
 //ACTION CREATOR
@@ -23,6 +24,11 @@ export function deleteStudent (student) {
   return action;
 }
 
+export function updateStudent(student) {
+  const action = { type: UPDATE_STUDENT, student };
+  return action;
+}
+
 export function fetchStudents () {
 
   return function thunk (dispatch) {
@@ -35,10 +41,10 @@ export function fetchStudents () {
   }
 }
 
-export function postStudent () {
+export function postStudent (student) {
 
   return function thunk (dispatch) {
-    return axios.post('/api/students')
+    return axios.post('/api/students', student)
     .then( res => res.data)
     .then(student => {
       const action = getStudent(student)
@@ -46,6 +52,20 @@ export function postStudent () {
     })
   }
 }
+
+export function putStudent (student) {
+
+  return function thunk (dispatch) {
+    console.log(student)
+    return axios.put(`/api/students/${student.id}`)
+    .then( res => {
+      const action = updateStudent(res.data)
+      dispatch(action)
+    })
+    .catch(console.error)
+  }
+}
+
 
 export function removeStudent (studentId) {
 
@@ -65,11 +85,15 @@ export default function reducer (state = [], action) {
     case GET_STUDENTS:
       return action.students
 
-    case GET_STUDENT:
+      case DELETE_STUDENT:
       return state.filter(student => student.id !== action.id)
 
-    case DELETE_STUDENT:
+      case GET_STUDENT:
       return [...state, action.student]
+
+    //not sure this gonna work -- grimace face
+    case UPDATE_STUDENT:
+      return [state.filter(student => student.id !== action.id), action.student]
 
     default:
       return state

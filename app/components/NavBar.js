@@ -5,7 +5,7 @@ const NavBar = (props) => {
   return (
     <header>
       <center>
-        <NavLink to="/">
+        <NavLink to="/campuses">
           <button type="button" className="btn btn-outline-success">Houses</button>
         </NavLink>
         <NavLink to="/">

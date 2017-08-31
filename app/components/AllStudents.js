@@ -2,6 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { removeStudent, fetchStudents } from '../store'
 
 function AllStudents(props) {
   const students = props.students
@@ -32,7 +33,7 @@ function AllStudents(props) {
               <td>{student.name}</td>
               <td>{student.wand}</td>
               <td>
-                <button type="button" className="close" aria-label="Close" onClick={props.deleteStudent}>
+                <button type="button" className="close" aria-label="Close" onClick={ () => {props.deleteStudent(event, student.id)}} >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </td>
@@ -52,11 +53,12 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
   return {
-    deleteStudent(event){
+    deleteStudent(event, id){
       event.preventDefault();
-      console.log('DELETED!!!')
+      dispatch(removeStudent(id))
+      dispatch(fetchStudents())
     }
   }
 }

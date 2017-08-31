@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 
@@ -7,31 +7,18 @@ import { connect } from 'react-redux'
 
 function SideBar(props) {
   //change to sidebar if you have time
-  const campuses = props.campuses
+  // const campuses = props.campuses
   return (
-    <footer>
-      <div >
-        <h4>Add Wizard</h4>
-        <input   />
-        <input  />
-        <select name="houseSort" className="form-control" >
-          {/* fix so that they cant submit this */}
-          <option defaultValue>The sorting hat says...</option>
-          {campuses.map((campus => {
-            return (
-              <option key={campus.id} value={campus.id}>{campus.name}</option>
-            )
-          })
-          )}
-        </select>
-          <button type="button" className="btn btn-outline-danger">Submit</button>
+    // <footer>
+      <div className="container-fluid">
+        <NavLink to="/AddStudent">
+          <button type="button" className="btn btn-outline-secondary btn-lg">Add Wizard</button>
+        </NavLink>
+        <NavLink to="/AddCampus">
+          <button type="button" className="btn btn-outline-info btn-lg">Add House</button>
+        </NavLink>
       </div>
-      <div >
-        <h4>Add House</h4>
-        <input />
-        <button type="button" className="btn btn-outline-primary">Submit</button>
-      </div>
-    </footer>
+    // </footer>
   )
 }
 
@@ -42,3 +29,4 @@ const mapStateToProps = function(state) {
 }
 
 export default connect(mapStateToProps)(SideBar)
+

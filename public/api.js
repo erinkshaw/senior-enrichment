@@ -4,18 +4,6 @@ const db = require('../db')
 const Campus = require('../db/models/campus')
 const Student = require('../db/models/student')
 
-// If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
-	// I know this because we automatically send index.html for all requests that don't make sense in our backend.
-	// Ideally you would have something to handle this, so if you have time try that out!
-api.get('/hello', (req, res) => res.send({hello: 'world'}))
-
-api.get('/campuses', (req, res) => {
-	Campus.findAll()
-	.then(campuses => {
-		res.json(campuses);
-	})
-	.catch(console.error);
-})
 
 api.get('/campuses/:campusId', (req, res) => {
 	const id = req.params.campusId
@@ -35,13 +23,27 @@ api.get('/campuses/:campusId/students', (req, res) => {
 	.catch(console.error)
 })
 
+api.get('/campuses', (req, res) => {
+	Campus.findAll()
+	.then(campuses => {
+		res.json(campuses);
+	})
+	.catch(console.error);
+})
 
+
+api.post('/students', (req, res) => {
+	Student.create(req.body)
+	.then( student => res.json(student) )
+	.catch(console.error)
+})
 
 api.get('/students', (req, res) => {
 	Student.findAll()
 	.then( students => res.json(students))
 	.catch(console.error)
 })
+
 
 api.get('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
@@ -52,19 +54,20 @@ api.get('/students/:studentId', (req, res) => {
 	.catch(console.error)
 })
 
-api.post('/campuses/:campusId/', (req, res) => {
-	Student.create(req.body)
-	.then( student => res.json(student) )
-	.catch(console.error)
-})
 
-api.delete('/campuses/:campusId/:studentId', (req, res) => {
+// api.delete('/campuses/:campusId/:studentId', (req, res) => {
+// 	const id = req.params.studentId
+// 	Student.destroy({where: {
+// 		id
+// 	}})
+// })
+
+api.delete('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
 	Student.destroy({where: {
 		id
 	}})
 })
-
 
 
 //use this if you wan't to make your code more modular:

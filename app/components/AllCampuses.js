@@ -12,7 +12,7 @@ function AllCampuses(props) {
       campuses.map( (campus) => {
         return (
           <NavLink key={campus.id} to={`/campuses/${campus.id}`}>
-            <img src ={campus.imgUrl} />
+            <img src ={campus.imgUrl} className="house" />
           </NavLink>
         )
       })

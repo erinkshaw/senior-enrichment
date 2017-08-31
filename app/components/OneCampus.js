@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { removeStudent, fetchStudents } from '../store'
 
 function OneCampus(props) {
   const campusId = props.match.params.campusId
@@ -15,7 +16,7 @@ function OneCampus(props) {
     <table>
       <thead>
         <tr>
-          <th></th>
+          <th />
           <th>Name</th>
           <th>Wand</th>
         </tr>
@@ -34,7 +35,8 @@ function OneCampus(props) {
                 </td>
                 <td>{student.name}</td>
                 <td>{student.wand}</td>
-                <td><button type="button" className="close" aria-label="Close">
+                <td>
+                  <button type="button" className="close" aria-label="Close" onClick={() => props.deleteStudent(event, student.id)} >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </td>
@@ -55,5 +57,17 @@ const mapStateToProps = function (state) {
   };
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    deleteStudent(event, id){
+      event.preventDefault();
+      dispatch(removeStudent(id))
+      console.log(id)
+      dispatch(fetchStudents());
+    }
+  }
+}
 
-export default connect(mapStateToProps)(OneCampus);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(OneCampus);
