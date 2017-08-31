@@ -48,7 +48,7 @@ api.get('/students/:studentId', (req, res) => {
 	.catch(console.error)
 })
 
-api.post('/campuses/:campusId/', (req, res) => {
+api.post('/students', (req, res) => {
 	Student.create(req.body)
 	.then( student => res.json(student) )
 	.catch(console.error)
@@ -71,8 +71,8 @@ api.put('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
 	// Student.update(req.body, {where: {id}, returning: true })
 	Student.findById(id)
-	.then((student) => {console.log(req.body)})
-	// .then((student) => student.update(req.body))
+	// .then((student) => {console.log(req.body)})
+	.then((student) => student.update(req.body))
 	.then(console.log('update successful'))
 })
 

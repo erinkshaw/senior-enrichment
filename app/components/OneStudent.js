@@ -41,11 +41,11 @@ function OneStudent(props) {
               <input  defaultValue={singleStudent && singleStudent.wand} name="wand" />
             </td>
             <td>
-              <select className="form-control" name="house" >
-                <option defaultValue id={singleStudent.campus.id}>{singleStudent && singleStudent.campus.name}</option>
+              <select className="form-control" name="houseSort" >
+                <option defaultValue value={singleStudent.campus.id}>{singleStudent && singleStudent.campus.name}</option>
                 {campuses.map( campus => {
                   if (singleStudent && campus.name !== singleStudent.campus.name) {
-                    return <option key={campus.id} id={campus.id}>{campus.name}</option>
+                    return <option key={campus.id} value={campus.id}>{campus.name}</option>
                   }
                   })}
               </select>
@@ -67,7 +67,7 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps, state) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     deleteStudent(event){
       const studentId = ownProps.match.params.studentId
@@ -80,12 +80,11 @@ const mapDispatchToProps = (dispatch, ownProps, state) => {
       const id = ownProps.match.params.studentId
       const name = event.target.name.value
       const wand = event.target.wand.value
-      const house = event.target.house.value
+      const campusId = event.target.houseSort.value
       event.preventDefault()
-      dispatch(putStudent({id, name, wand}))
-      // dispatch(fetchStudents())
-      console.log('success?')
-    }
+      dispatch(putStudent({id, name, wand, campusId}))
+      dispatch(fetchStudents())
+      ownProps.history.push('/students')}
   }
 }
 

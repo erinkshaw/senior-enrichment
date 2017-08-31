@@ -2,45 +2,30 @@
 //seed file from stackchat below. Use when creating YOUR seed file
 
 const db = require('./db');
-var Student = require('./db/models').Student;
-var Campus = require('./db/models').Campus;
+var Student = require('./db/models/student')
+var Campus = require('./db/models/campus');
 
 Student.belongsTo(Campus)
 
-const students = [
-  {name: "Erin"},
-  {name: "Kimberly"},
-  {name: "Gabby"},
-  {name: "Jennifer" },
-  {name: "Michelle"},
-  {name: "Emily"},
-  {name: "Erika"},
-  {name: "Mieka"},
-]
+var student = [
+    {name: "Harry Potter", wand: "11 inch, holly, phoenix feather", campusId: 1},
+    {name: "Ron Weasley", wand: "12 inch, ash, unicorn hair", campusId: 1},
+    {name: "Hermione Granger", wand: "10¾ inch, vine, dragon heartstring", campusId: 1},
+    {name: "Cho Chang", wand: "9½ inch, rosewood, Veela hair", campusId: 2},
+    {name: "Penelope Clearwater", wand: "14 inch, willow, unicorn hair", campusId: 2},
+    {name: "Cedric Diggory", wand: "12¼ inch, ash, unicorn hair", campusId: 3},
+    // {name: "Draco Malfoy", wand: "10 inch, hawthorn, unicorn hair", campusId: 4},
+    // {name: "Vincent Crabbe", wand: "12¾ inch, walnut, dragon heartstring", campusId: 4},
+  ]
+
 
 const campus = [
   {name: "Gryffindor", imgUrl: 'https://www.hp-lexicon.org/wp-content/uploads/2015/08/shield_01-5B1-5D.jpg'},
   {name: "Ravenclaw", imgUrl: 'https://www.hp-lexicon.org/wp-content/uploads/2015/08/shield_rav-200x0-c-default.jpg'},
-  {name: "Hufflepuff", imgUrl: 'https://vignette3.wikia.nocookie.net/harrypotter/images/e/e4/Hufflepuff.jpg/revision/latest?cb=20110817075555'},
-  {name: "Slytherin", imgUrl: 'http://vignette1.wikia.nocookie.net/harryalbuspotter/images/4/45/Slytherin_by_melisarodriguez-d47ly0k.png/revision/latest?cb=20140621170234'}
+  {name: "Hufflepuff", imgUrl: 'https://vignette3.wikia.nocookie.net/harrypotter/images/e/e4/Hufflepuff.jpg/revision/latest?cb=20110817075555'}
+  // {name: "Slytherin", imgUrl: 'http://vignette1.wikia.nocookie.net/harryalbuspotter/images/4/45/Slytherin_by_melisarodriguez-d47ly0k.png/revision/latest?cb=20140621170234'}
 ];
 
-const id = () => Math.round(Math.random() * (campus.length - 1)) + 1;
-
-// const messages = [
-//   { authorId: id(), content: 'I like React!', channelId: 1 },
-//   { authorId: id(), content: 'I like Redux!', channelId: 1 },
-//   { authorId: id(), content: 'I like React-Redux!', channelId: 1 },
-//   { authorId: id(), content: 'I like writing web apps!', channelId: 2 },
-//   { authorId: id(), content: 'You should learn JavaScript!', channelId: 2 },
-//   { authorId: id(), content: 'JavaScript is pretty great!', channelId: 2 },
-//   { authorId: id(), content: 'Dogs are great!', channelId: 3 },
-//   { authorId: id(), content: 'Cats are also great!', channelId: 3 },
-//   { authorId: id(), content: 'Why must we fight so?', channelId: 3 },
-//   { authorId: id(), content: 'I want to get tacos!', channelId: 4 },
-//   { authorId: id(), content: 'I want to get salad!', channelId: 4 },
-//   { authorId: id(), content: 'I want a taco salad!', channelId: 4 }
-// ];
 
 const seed = () =>
   Promise.all(campus.map(campus =>
@@ -53,21 +38,36 @@ const seed = () =>
   )
   ));
 
-const main = () => {
-  console.log('Syncing db...');
-  db.sync({ force: true })
-    .then(() => {
-      console.log('Seeding database...');
-      return seed();
-    })
-    .catch(err => {
-      console.log('Error while seeding');
-      console.log(err.stack);
-    })
-    .then(() => {
-      db.close();
-      return null;
-    });
-};
+// const main = () => {
+//   console.log('Syncing db...');
+//   db.sync({ force: true })
+//     .then(() => {
+//       console.log('Seeding database...');
+//       return seed();
+//     })
+//     .catch(err => {
+//       console.log('Error while seeding');
+//       console.log(err.stack);
+//     })
+//     .then(() => {
+//       db.close();
+//       return null;
+//     });
+// };
+
+
+
+const main = () => {db.sync({force: true})
+.then(()=> {
+  return seed()
+})
+.catch(err => {
+  console.log('Error while seeding');
+  console.log(err.stack);
+})
+.then(() => {
+  db.close();
+  return null;
+})}
 
 main();

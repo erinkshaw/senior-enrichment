@@ -54,10 +54,9 @@ export function postStudent (student) {
 }
 
 export function putStudent (student) {
-
+  console.log(student.campusId)
   return function thunk (dispatch) {
-    console.log(student)
-    return axios.put(`/api/students/${student.id}`)
+    return axios.put(`/api/students/${student.id}`, student)
     .then( res => {
       const action = updateStudent(res.data)
       dispatch(action)

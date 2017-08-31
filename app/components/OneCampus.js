@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { removeStudent, fetchStudents } from '../store'
+import { removeStudent, fetchStudents, fetchCampuses, removeCampus } from '../store'
 
 function OneCampus(props) {
   const campusId = props.match.params.campusId
@@ -12,40 +12,54 @@ function OneCampus(props) {
   const singleCampus = campuses.find(findCampus)
   return (
   <div>
-    <img src={singleCampus && singleCampus.imgUrl} />
     <table>
-      <thead>
-        <tr>
-          <th />
-          <th>Name</th>
-          <th>Wand</th>
-        </tr>
-      </thead>
-        <tbody>
-        {
-          findStudents.map( (student) => {
-            return (
-              <tr key={student.id}>
-                <td>
-                  <NavLink to={`/students/${student.id}`}>
-                  <button type="button" className="close" aria-label="Close">
-                    <span aria-hidden="true">+</span>
-                  </button>
-                  </NavLink>
-                </td>
-                <td>{student.name}</td>
-                <td>{student.wand}</td>
-                <td>
-                  <button type="button" className="close" aria-label="Close" onClick={() => props.deleteStudent(event, student.id)} >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </td>
-              </tr>
-              )
-          })
-        }
-      </tbody>
+      <td>
+      <img src={singleCampus && singleCampus.imgUrl} />
+      </td>
+      {/* <td>
+        <h4>Delete Campus</h4>
+      </td> */}
+      <td>
+      <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </td>
     </table>
+    {findStudents[0] ?
+      <table>
+        <thead>
+          <tr>
+            <th />
+            <th>Name</th>
+            <th>Wand</th>
+          </tr>
+        </thead>
+          <tbody>
+          {
+            findStudents.map( (student) => {
+              return (
+                <tr key={student.id}>
+                  <td>
+                    <NavLink to={`/students/${student.id}`}>
+                    <button type="button" className="close" aria-label="Close">
+                      <span aria-hidden="true">+</span>
+                    </button>
+                    </NavLink>
+                  </td>
+                  <td>{student.name}</td>
+                  <td>{student.wand}</td>
+                  <td>
+                    <button type="button" className="close" aria-label="Close" onClick={() => props.deleteStudent(event, student.id)} >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </td>
+                </tr>
+                )
+            })
+          }
+        </tbody>
+      </table>
+    : <div />}
   </div>
   )
 
@@ -62,8 +76,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     deleteStudent(event, id){
       event.preventDefault();
       dispatch(removeStudent(id))
-      console.log(id)
       dispatch(fetchStudents());
+    },
+    deleteCampus(event){
+      const id = ownProps.match.params.campusId
+      event.preventDefault();
+      dispatch(removeCampus(id))
+      dispatch(fetchCampuses());
+      ownProps.history.push(`/`)
     }
   }
 }

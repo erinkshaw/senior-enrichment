@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       event.preventDefault();
       dispatch(postCampus({name}))
       dispatch(fetchCampuses());
-      console.log('did it work?', name)
+      ownProps.history.push('/campuses')
     }
   }
 }

@@ -6,7 +6,6 @@ import { removeStudent, fetchStudents } from '../store'
 
 function AllStudents(props) {
   const students = props.students
-  console.log(students)
   return (
     <div>
       <h3>Wizards</h3>
@@ -16,6 +15,7 @@ function AllStudents(props) {
             <th></th>
             <th>Name</th>
             <th>Wand</th>
+            <th>House</th>
           </tr>
         </thead>
           <tbody>
@@ -32,6 +32,7 @@ function AllStudents(props) {
               </td>
               <td>{student.name}</td>
               <td>{student.wand}</td>
+              <td>{student.campus.name}</td>
               <td>
                 <button type="button" className="close" aria-label="Close" onClick={ () => {props.deleteStudent(event, student.id)}} >
                   <span aria-hidden="true">&times;</span>

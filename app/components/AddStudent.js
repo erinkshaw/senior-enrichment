@@ -58,13 +58,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     SubmitStudent(event){
       const name = event.target.name.value
       const wand = event.target.wand.value
+      const campusId = event.target.houseSort.value
       event.preventDefault();
-      dispatch(postStudent({name, wand}))
+      dispatch(postStudent({name, wand, campusId}))
       dispatch(fetchStudents());
-      console.log('did it work?')
+      ownProps.history.push('/students')
     }
   }
 }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddStudent)
+
