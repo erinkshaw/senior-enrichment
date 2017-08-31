@@ -88,7 +88,7 @@ api.delete('/campuses/:campusId/', (req, res) => {
 	const id = req.params.campusId
 	Campus.destroy({where: {
 		id
-	}})
+	}, individualHooks: true })
 })
 
 
