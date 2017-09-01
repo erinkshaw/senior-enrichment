@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 function AllCampuses(props) {
   const campuses = props.campuses
   return (
-    <div>
+    <div className="school container-fluid" >
     {
       campuses.map( (campus) => {
         return (

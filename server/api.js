@@ -71,7 +71,6 @@ api.put('/students/:studentId', (req, res) => {
 	const id = req.params.studentId
 	// Student.update(req.body, {where: {id}, returning: true })
 	Student.findById(id)
-	// .then((student) => {console.log(req.body)})
 	.then((student) => student.update(req.body))
 	.then(console.log('update successful'))
 })

@@ -10,11 +10,13 @@ function AddCampus(props) {
     // <footer>
       <div >
         <AllCampuses />
+        <div className="addschool">
         <h4>Add House</h4>
         <form onSubmit={props.SubmitCampus}>
         <input name="campus"  />
         <button type="submit" className="btn btn-outline-primary">Submit</button>
         </form>
+        </div>
       </div>
     // </footer>
   )

@@ -54,7 +54,6 @@ export function postStudent (student) {
 }
 
 export function putStudent (student) {
-  console.log(student.campusId)
   return function thunk (dispatch) {
     return axios.put(`/api/students/${student.id}`, student)
     .then( res => {

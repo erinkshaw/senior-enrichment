@@ -10,7 +10,7 @@ function SideBar(props) {
   // const campuses = props.campuses
   return (
     // <footer>
-      <div className="container-fluid">
+      <div className="container-fluid school">
         <NavLink to="/AddStudent">
           <button type="button" className="btn btn-outline-secondary btn-lg">Add Wizard</button>
         </NavLink>

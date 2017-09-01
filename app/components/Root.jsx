@@ -21,7 +21,7 @@ export default class Main extends Component {
     return (
       <Router>
         <div id="main" className="container-fluid">
-          <div className="col-xs-10">
+          <div className="col-xs-12">
             <NavBar />
             <Switch>
               <Route exact path="/students" component={AllStudents} />

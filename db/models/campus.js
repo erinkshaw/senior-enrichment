@@ -1,4 +1,5 @@
 'use strict';
+
 var Sequelize = require('sequelize')
 var db = require('../index.js')
 
@@ -15,7 +16,6 @@ const Campus = db.define('campus', {
 }, {
   hooks: {
     beforeDestroy: function(campus) {
-      console.log('got to before destroy')
       db.model('student').destroy({
         where: {
         campusId: campus.id
@@ -24,11 +24,5 @@ const Campus = db.define('campus', {
   }
 })
 
-// Campus.hook('beforeDestroy', (campus) => {
-//   const campusId = campus.id
-//   db.Student.destroy( { where: {campusId} } )
-//   .then(console.log('successfully deleted students'))
-//   .catch(console.error)
-// })
 
 module.exports = Campus

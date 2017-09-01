@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { removeStudent, putStudent, fetchStudents } from '../store'
+import { removeStudent, putStudent, fetchStudents, getStudent } from '../store'
 
 function OneStudent(props) {
   const studentId = props.match.params.studentId
@@ -24,7 +24,7 @@ function OneStudent(props) {
             <th></th>
             <th>Name</th>
             <th>Wand</th>
-            <th>House</th>
+            <th>House           </th>
           </tr>
         </thead>
         <tbody>
@@ -41,7 +41,7 @@ function OneStudent(props) {
               <input  defaultValue={singleStudent && singleStudent.wand} name="wand" />
             </td>
             <td>
-              <select className="form-control" name="houseSort" >
+              <select className="form-control houseSelect" name="houseSort" >
                 <option defaultValue value={singleStudent.campus.id}>{singleStudent && singleStudent.campus.name}</option>
                 {campuses.map( campus => {
                   if (singleStudent && campus.name !== singleStudent.campus.name) {

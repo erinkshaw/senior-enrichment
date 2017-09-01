@@ -10,8 +10,8 @@ function AddStudent(props) {
   return (
     <div >
     <AllStudents />
+      <div id="addwizard">
       <h4>Add Wizard</h4>
-
           <form onSubmit={props.SubmitStudent}>
       <table>
         <thead>
@@ -42,6 +42,7 @@ function AddStudent(props) {
         </tbody>
       </table>
           </form>
+          </div>
     </div>
     // </footer>
   )

@@ -29,4 +29,21 @@ sidebar {
   height: 210px;
 }
 
+.school {
+  margin: auto;
+  width: 80%;
+}
 
+.addschool {
+  margin: auto;
+  width: 50%;
+}
+
+#addwizard {
+  margin-top: 50px
+
+}
+
+.houseSelect {
+  width: 100%
+}
