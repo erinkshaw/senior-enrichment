@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   students
 })
 
+
 export default rootReducer
 
 export * from './campuses';

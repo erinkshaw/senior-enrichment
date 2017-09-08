@@ -16,8 +16,8 @@ function OneStudent(props) {
       <NavLink to={`/campuses/${singleStudent.campus.id}`}>
       <img src={singleStudent && singleStudent.campus.imgUrl} />
       </NavLink>
-      <h3>Edit Wizard</h3>
-            <form onSubmit={props.updateStudent}>
+      {/* <h3>Edit Wizard</h3> */}
+            <form onSubmit={ () =>  props.updateStudent}>
       <table>
         <thead>
           <tr>
@@ -73,17 +73,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const studentId = ownProps.match.params.studentId
       event.preventDefault();
       dispatch(removeStudent(studentId))
-      dispatch(fetchStudents())
       ownProps.history.push('/students')
     },
-    updateStudent(event){
+    updateStudent(event, campus){
       const id = ownProps.match.params.studentId
       const name = event.target.name.value
       const wand = event.target.wand.value
       const campusId = event.target.houseSort.value
       event.preventDefault()
-      dispatch(putStudent({id, name, wand, campusId}))
-      dispatch(fetchStudents())
+      dispatch(putStudent({id, name, wand, campusId, campus}))
+      // dispatch(fetchStudents())
       ownProps.history.push('/students')}
   }
 }

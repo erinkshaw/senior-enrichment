@@ -19,8 +19,8 @@ export function getStudent (student) {
   return action;
 }
 
-export function deleteStudent (student) {
-  const action = { type: DELETE_STUDENT, student };
+export function deleteStudent (id) {
+  const action = { type: DELETE_STUDENT, id };
   return action;
 }
 
@@ -70,8 +70,8 @@ export function removeStudent (studentId) {
   return function thunk (dispatch) {
     return axios.delete(`/api/students/${studentId}`)
     .then( res => res.data)
-    .then(student => {
-      const action = deleteStudent(student)
+    .then( () => {
+      const action = deleteStudent(studentId)
       dispatch(action)
     })
   }
@@ -89,7 +89,6 @@ export default function reducer (state = [], action) {
       case GET_STUDENT:
       return [...state, action.student]
 
-    //not sure this gonna work -- grimace face
     case UPDATE_STUDENT:
       return [state.filter(student => student.id !== action.id), action.student]
 

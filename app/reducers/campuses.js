@@ -54,7 +54,7 @@ export function fetchCampuses () {
       return axios.delete(`/api/campuses/${campusId}`)
       .then( res => res.data)
       .then(campus => {
-        const action = getCampus(campus)
+        const action = deleteCampus(campus)
         dispatch(action)
       })
     }

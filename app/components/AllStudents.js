@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
     deleteStudent(event, id){
       event.preventDefault();
       dispatch(removeStudent(id))
-      dispatch(fetchStudents())
     }
   }
 }

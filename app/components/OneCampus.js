@@ -84,7 +84,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(removeCampus(id))
       dispatch(fetchCampuses());
       dispatch(fetchStudents());
-      ownProps.history.push(`/`)
+      ownProps.history.push(`/campuses`)
     }
   }
 }

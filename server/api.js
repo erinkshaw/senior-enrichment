@@ -63,7 +63,7 @@ api.post('/campuses/', (req, res) => {
 api.put('/campuses/:campusId', (req, res) => {
 	const id = req.params.campusId
 	Campus.update(req.body, {where: {id}, returning: true })
-	.then(console.log('update successful'))
+	.then(() => res.sendStatus(201))
 })
 
 
@@ -72,7 +72,7 @@ api.put('/students/:studentId', (req, res) => {
 	// Student.update(req.body, {where: {id}, returning: true })
 	Student.findById(id)
 	.then((student) => student.update(req.body))
-	.then(console.log('update successful'))
+	.then(student => res.send(student))
 })
 
 
@@ -81,6 +81,7 @@ api.delete('/students/:studentId', (req, res) => {
 	Student.destroy({where: {
 		id
 	}})
+	.then(() => res.sendStatus(201))
 })
 
 api.delete('/campuses/:campusId/', (req, res) => {
@@ -88,13 +89,8 @@ api.delete('/campuses/:campusId/', (req, res) => {
 	Campus.destroy({where: {
 		id
 	}, individualHooks: true })
+	.then(() => res.sendStatus(201))
 })
-
-
-//use this if you wan't to make your code more modular:
-
-// api.use('/students', require('./students'));
-// api.use('/campuses', require('./campuses'));
 
 // Make sure this is after all of
 // the registered routes!
