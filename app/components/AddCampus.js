@@ -7,7 +7,6 @@ import { postCampus, fetchCampuses } from '../store'
 function AddCampus(props) {
   const campuses = props.campuses
   return (
-    // <footer>
       <div >
         <AllCampuses />
         <div className="addschool">
@@ -18,7 +17,6 @@ function AddCampus(props) {
         </form>
         </div>
       </div>
-    // </footer>
   )
 }
 
