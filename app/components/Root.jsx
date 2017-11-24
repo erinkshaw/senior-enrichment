@@ -29,13 +29,13 @@ export default class Main extends Component {
               <Route exact path="/campuses" component={AllCampuses} />
               <Route path="/students/:studentId" component={OneStudent} />
             </Switch>
-            <footer className="sidebar">
+            <div className="sidebar">
               <Switch>
                   <Route exact path="/" component={SideBar} />
                   <Route path="/AddStudent" component={AddStudent} />
                   <Route path="/AddCampus" component={AddCampus} />
-                </Switch>
-            </footer>
+              </Switch>
+            </div>
         </div>
       </Router>
     )

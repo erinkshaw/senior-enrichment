@@ -6,12 +6,12 @@ import { connect } from 'react-redux'
 
 function SideBar() {
   return (
-      <div className="container-fluid school buffer">
+      <div className="main-footer">
         <NavLink to="/AddStudent">
-          <button type="button" className="btn btn-outline-secondary btn-lg">Add Wizard</button>
+          <button className="btn-outline-secondary btn-lg">Add Wizard</button>
         </NavLink>
         <NavLink to="/AddCampus">
-          <button type="button" className="btn btn-outline-info btn-lg">Add House</button>
+          <button className="btn-outline-info btn-lg">Add House</button>
         </NavLink>
       </div>
   )

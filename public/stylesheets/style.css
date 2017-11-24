@@ -19,14 +19,20 @@
 #main {
   padding-left: 0;
 }
-
-sidebar {
-  position: absolute;
+*/
+.sidebar {
+  position: sticky;
   bottom: 0;
-  width: 644px;
-  height: 20px;
-  margin: 0 auto;
+  margin: 300px 0;
 }
+
+.main-footer {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+
 
 .house{
   height:400px;
@@ -35,11 +41,13 @@ sidebar {
 
 .house:hover {
   height: 410px;
+  margin-bottom: -10px
 }
-*/
+
 .school {
   display: flex;
   justify-content: space-between
+}
 /*
 .addschool {
   margin: auto;
