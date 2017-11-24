@@ -1,6 +1,5 @@
 #logo {
-  height: 300px;
-  /* margin-top: 10px */
+  height: 200px;
 }
 
 #logo:hover {
@@ -9,7 +8,7 @@
 }
 
 .btn-header {
-  margin-top: 75%;
+  margin-top: 50%;
 }
 /* button {
   margin: 0 100px 0 100px
@@ -23,7 +22,7 @@
 .sidebar {
   position: sticky;
   bottom: 0;
-  margin: 300px 0;
+  margin: 200px 0;
 }
 
 .main-footer {
@@ -32,21 +31,24 @@
 
 }
 
-
-
 .house{
-  height:400px;
+  height:200px;
   padding: 20px
 }
 
 .house:hover {
-  height: 410px;
+  height: 210px;
   margin-bottom: -10px
 }
 
-.school {
+.school-header {
   display: flex;
-  justify-content: space-between
+  justify-content: space-around;
+}
+
+.school-body {
+  display: flex;
+  justify-content: space-around;
 }
 /*
 .addschool {

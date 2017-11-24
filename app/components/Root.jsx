@@ -20,7 +20,7 @@ export default class Main extends Component {
   render() {
     return (
       <Router>
-        <div id="main" >
+        <div>
             <NavBar />
             <Switch>
               <Route exact path="/students" component={AllStudents} />

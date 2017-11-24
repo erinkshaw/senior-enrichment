@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <header className="school">
+    <header className="school-header">
         <NavLink to="/campuses">
           <button className="btn-lg btn-outline-success btn-header">Houses</button>
         </NavLink>
