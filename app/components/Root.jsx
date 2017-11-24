@@ -20,8 +20,7 @@ export default class Main extends Component {
   render() {
     return (
       <Router>
-        <div id="main" className="container-fluid">
-          <div className="col-xs-12">
+        <div id="main" >
             <NavBar />
             <Switch>
               <Route exact path="/students" component={AllStudents} />
@@ -30,16 +29,13 @@ export default class Main extends Component {
               <Route exact path="/campuses" component={AllCampuses} />
               <Route path="/students/:studentId" component={OneStudent} />
             </Switch>
-          </div>
-          <div className="col-xs-2">
-            <footer>
+            <footer className="sidebar">
               <Switch>
                   <Route exact path="/" component={SideBar} />
                   <Route path="/AddStudent" component={AddStudent} />
                   <Route path="/AddCampus" component={AddCampus} />
                 </Switch>
             </footer>
-          </div>
         </div>
       </Router>
     )

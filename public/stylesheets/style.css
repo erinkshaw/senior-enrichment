@@ -1,39 +1,46 @@
 #logo {
-  height: 150px;
-  margin-top: 10px
+  height: 300px;
+  /* margin-top: 10px */
 }
 
-button {
-  margin: 0 100px 0 100px
+#logo:hover {
+    -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+    filter: blur(5px);
 }
+
+.btn-header {
+  margin-top: 75%;
+}
+/* button {
+  margin: 0 100px 0 100px
+} */
+/*
 
 #main {
   padding-left: 0;
 }
 
 sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  padding: 0 !important;
-  width: 25%;
-  width: inherit;
+  position: absolute;
+  bottom: 0;
+  width: 644px;
+  height: 20px;
+  margin: 0 auto;
 }
 
 .house{
-  height:200px;
+  height:400px;
   padding: 20px
 }
 
 .house:hover {
-  height: 210px;
+  height: 410px;
 }
-
+*/
 .school {
-  margin: auto;
-  width: 80%;
-}
-
+  display: flex;
+  justify-content: space-between
+/*
 .addschool {
   margin: auto;
   width: 50%;
@@ -46,4 +53,4 @@ sidebar {
 
 .houseSelect {
   width: 100%
-}
+} */
