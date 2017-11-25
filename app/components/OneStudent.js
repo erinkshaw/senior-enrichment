@@ -11,12 +11,13 @@ function OneStudent(props) {
   const findStudent = (student) => student.id == +studentId
   const singleStudent = students.find(findStudent)
   return (
+    <div>
+        <h3>Edit Vizard</h3>
     <div className="one-student">
       <NavLink to={`/campuses/${singleStudent.campus.id}`}>
         <img src={singleStudent && singleStudent.campus.imgUrl} />
       </NavLink>
       <div id="edit-student">
-        <h3>Edit Vizard</h3>
         <form onSubmit={props.updateStudent}>
           <table>
             <thead>
@@ -35,8 +36,10 @@ function OneStudent(props) {
                 <td>
                   <input className="form-control" defaultValue={singleStudent && singleStudent.name} name="name" />
                 </td>
-                <td>
-                  <input className="form-control" style={{ width: '200px' }} defaultValue={singleStudent && singleStudent.wand} name="wand" />
+                <td style={{ width: '310px' }}>
+                  <input
+                    className="form-control"
+                    defaultValue={singleStudent && singleStudent.wand} name="wand" />
                 </td>
                 <td>
                   <select className="form-control houseSelect" name="houseSort" >
@@ -56,6 +59,7 @@ function OneStudent(props) {
           </table>
         </form>
       </div>
+    </div>
     </div>
   )
 }

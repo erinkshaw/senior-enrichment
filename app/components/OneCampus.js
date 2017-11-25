@@ -11,57 +11,59 @@ function OneCampus(props) {
   const findStudents = students.filter((student) => student.campusId == +campusId);
   const singleCampus = campuses.find(findCampus)
   return (
-    <div className="one-campus">
-      <div style={{marginRight: '100px'}}>
-        <table>
-          <td>
-            <img src={singleCampus && singleCampus.imgUrl} />
-          </td>
-          <td>
-            <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </td>
-        </table>
-      </div>
-      {findStudents[0] ?
-        <div>
-          <h3>Vizards</h3>
+    <div>
+      <h3>Vizards</h3>
+      <div className="one-campus">
+        <div style={{ marginRight: '100px' }}>
           <table>
-            <thead>
-              <tr>
-                <th />
-                <th>Name</th>
-                <th>Wand</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                findStudents.map((student) => {
-                  return (
-                    <tr key={student.id}>
-                      <td>
-                        <NavLink to={`/students/${student.id}`}>
-                          <button type="button" className="close" aria-label="Close">
-                            <span aria-hidden="true">+</span>
-                          </button>
-                        </NavLink>
-                      </td>
-                      <td>{student.name}</td>
-                      <td>{student.wand}</td>
-                      <td>
-                        <button type="button" className="close" aria-label="Close" onClick={() => props.deleteStudent(event, student.id)} >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
+            <td>
+              <img src={singleCampus && singleCampus.imgUrl} />
+            </td>
+            <td>
+              <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </td>
           </table>
         </div>
-        : <div />}
+        {findStudents[0] ?
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th />
+                  <th>Name</th>
+                  <th>Wand</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  findStudents.map((student) => {
+                    return (
+                      <tr key={student.id}>
+                        <td>
+                          <NavLink to={`/students/${student.id}`}>
+                            <button type="button" className="close" aria-label="Close">
+                              <span aria-hidden="true">+</span>
+                            </button>
+                          </NavLink>
+                        </td>
+                        <td>{student.name}</td>
+                        <td>{student.wand}</td>
+                        <td>
+                          <button type="button" className="close" aria-label="Close" onClick={() => props.deleteStudent(event, student.id)} >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+          : <div />}
+      </div>
     </div>
   )
 

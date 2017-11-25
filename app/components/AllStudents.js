@@ -7,8 +7,8 @@ import { removeStudent, fetchStudents } from '../store'
 function AllStudents(props) {
   const students = props.students
   return (
-    <div>
-      <h3>Wizards</h3>
+    <div style={{marginTop: '50px'}}>
+      <h3>Vizards</h3>
       <table>
         <thead>
           <tr>
