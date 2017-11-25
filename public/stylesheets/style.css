@@ -51,7 +51,6 @@ table {
 }
 
 .house:hover {
-  /* height: 210px; */
   transform: scale(1.1);
   margin-bottom: -10px
 }
@@ -69,8 +68,8 @@ table {
 
 .one-student {
   display: flex;
-  justify-content: flex-start;
-  /* align-items: center */
+  align-items: center;
+  justify-content: center;
 }
 
 #edit-student {
