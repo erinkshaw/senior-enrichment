@@ -16,7 +16,7 @@ function OneStudent(props) {
         <img src={singleStudent && singleStudent.campus.imgUrl} />
       </NavLink>
       <div id="edit-student">
-        <h3 style={{ fontFamily: 'LUMOS', textAlign: 'center' }}>Edit Vizard</h3>
+        <h3>Edit Vizard</h3>
         <form onSubmit={props.updateStudent}>
           <table>
             <thead>

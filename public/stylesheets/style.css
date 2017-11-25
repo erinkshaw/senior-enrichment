@@ -20,15 +20,12 @@
 .btn-footer {
   font-family: 'LUMOS','Lucida Sans'
 }
-/* button {
-  margin: 0 100px 0 100px
-} */
-/*
 
-#main {
-  padding-left: 0;
+h3 {
+  font-family: 'LUMOS';
+  text-align: center
 }
-*/
+
 .sidebar {
   position: sticky;
   bottom: 0;
@@ -72,21 +69,20 @@ table {
   justify-content: center;
 }
 
+.one-campus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td {
+  padding: 0 10px
+}
+
+th {
+  padding: 0 10px
+}
+
 #edit-student {
-  /* font-family: 'LUMOS','Lucida Sans'; */
   margin-top: 75px
 }
-/*
-.addschool {
-  margin: auto;
-  width: 50%;
-}
-
-#addwizard {
-  margin-top: 50px
-
-}
-
-.houseSelect {
-  width: 100%
-} */
