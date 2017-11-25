@@ -8,7 +8,7 @@ function AddCampus(props) {
   const campuses = props.campuses
   return (
       <div >
-        <AllCampuses />
+        {/* <AllCampuses /> */}
         <div className="addschool">
         <h4>Add House</h4>
         <form onSubmit={props.SubmitCampus}>

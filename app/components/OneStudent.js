@@ -36,7 +36,7 @@ function OneStudent(props) {
                 <td>
                   <input className="form-control" defaultValue={singleStudent && singleStudent.name} name="name" />
                 </td>
-                <td style={{ width: '310px' }}>
+                <td style={{ width: '300px' }}>
                   <input
                     className="form-control"
                     defaultValue={singleStudent && singleStudent.wand} name="wand" />
