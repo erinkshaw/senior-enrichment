@@ -41,6 +41,10 @@
 
 }
 
+table {
+  width: 100%;
+}
+
 .house{
   height:200px;
   padding: 20px
@@ -61,6 +65,17 @@
   display: flex;
   justify-content: space-around;
   margin-top: 50px
+}
+
+.one-student {
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center */
+}
+
+#edit-student {
+  /* font-family: 'LUMOS','Lucida Sans'; */
+  margin-top: 75px
 }
 /*
 .addschool {
