@@ -1,14 +1,24 @@
+@font-face {
+  font-family: 'LUMOS';
+  src: url('/LumosLatino.ttf');
+}
+
 #logo {
   height: 200px;
+  margin-top: 10px
 }
 
 #logo:hover {
-    -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-    filter: blur(5px);
+    filter: grayscale(75%);
 }
 
 .btn-header {
   margin-top: 50%;
+  font-family: 'LUMOS','Lucida Sans'
+}
+
+.btn-footer {
+  font-family: 'LUMOS','Lucida Sans'
 }
 /* button {
   margin: 0 100px 0 100px
@@ -22,7 +32,7 @@
 .sidebar {
   position: sticky;
   bottom: 0;
-  margin: 200px 0;
+  margin: 100px 0 0 0;
 }
 
 .main-footer {
@@ -37,7 +47,8 @@
 }
 
 .house:hover {
-  height: 210px;
+  /* height: 210px; */
+  transform: scale(1.1);
   margin-bottom: -10px
 }
 
@@ -49,6 +60,7 @@
 .school-body {
   display: flex;
   justify-content: space-around;
+  margin-top: 50px
 }
 /*
 .addschool {
