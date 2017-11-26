@@ -1,18 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import AllCampuses from './AllCampuses'
 import { postCampus, fetchCampuses } from '../store'
 
 function AddCampus(props) {
-  const campuses = props.campuses
   return (
       <div >
-        {/* <AllCampuses /> */}
-        <div className="addschool">
-        <h4>Add House</h4>
-        <form onSubmit={props.SubmitCampus}>
-        <input name="campus"  />
+        <h3>Add House</h3>
+        <div >
+        <form className="addschool" onSubmit={props.SubmitCampus}>
+        <input
+        className="form-control"
+        name="campus"
+        style={{width: '50%'}}
+        />
         <button type="submit" className="btn btn-outline-primary">Submit</button>
         </form>
         </div>

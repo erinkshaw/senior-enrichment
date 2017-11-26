@@ -18,24 +18,21 @@ export default class Main extends Component {
     store.dispatch(studentsThunk);
   }
   render() {
+    const be = this.state
     return (
       <Router>
         <div>
             <NavBar />
-            <Switch>
-              <Route exact path="/students" component={AllStudents} />
-              <Route exact path="/" component={AllCampuses} />
-              <Route path="/campuses/:campusId" component={OneCampus} />
-              <Route exact path="/campuses" component={AllCampuses} />
-              <Route path="/students/:studentId" component={OneStudent} />
-            </Switch>
-            <div className="sidebar">
               <Switch>
-                  <Route exact path="/" component={SideBar} />
-                  <Route path="/AddStudent" component={AddStudent} />
-                  <Route path="/AddCampus" component={AddCampus} />
+                <Route exact path="/students" component={AllStudents} />
+                <Route exact path="/" component={AllCampuses} />
+                <Route path="/campuses/:campusId" component={OneCampus} />
+                <Route exact path="/campuses" component={AllCampuses} />
+                <Route path="/students/:studentId" component={OneStudent} />
+                <Route path="/AddStudent" component={AddStudent} />
+                <Route path="/AddCampus" component={AddCampus} />
               </Switch>
-            </div>
+            <SideBar />
         </div>
       </Router>
     )

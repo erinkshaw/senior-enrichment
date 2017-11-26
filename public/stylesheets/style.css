@@ -28,15 +28,19 @@ h3 {
 }
 
 .sidebar {
-  position: sticky;
+  position: absolute;
   bottom: 0;
-  margin: 100px 0 0 0;
+  /* margin: 100px 0 0 0; */
 }
 
 .main-footer {
   display: flex;
   justify-content: space-around;
-
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
 }
 
 table {
@@ -86,4 +90,18 @@ th {
 
 #edit-student {
   margin-top: 75px
+}
+
+.addschool {
+  display: flex;
+  justify-content: center
+}
+
+.addschool button {
+  height: 100%;
+  margin-top: 9px
+}
+
+.addschool input {
+  margin: 10px
 }

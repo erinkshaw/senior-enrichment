@@ -9,9 +9,8 @@ function AddStudent(props) {
   const campuses = props.campuses
   return (
     <div >
-    <AllStudents />
+      <h3>Add Vizard</h3>
       <div id="addwizard">
-      <h4>Add Wizard</h4>
           <form onSubmit={props.SubmitStudent}>
       <table>
         <thead>
@@ -21,8 +20,8 @@ function AddStudent(props) {
         </thead>
         <tbody>
           <tr>
-            <td><input  name="name" /></td>
-            <td><input  name="wand" /></td>
+            <td><input className="form-control" name="name" /></td>
+            <td><input className="form-control" name="wand" /></td>
             <td>
               <select name="houseSort" className="form-control" >
           {/* fix so that they cant submit this */}
