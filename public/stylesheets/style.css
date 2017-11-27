@@ -64,8 +64,10 @@ table {
 
 .school-body {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
-  margin-top: 50px
+  align-items: center;
+  height: 300px;
 }
 
 .one-student {
