@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { removeStudent, fetchStudents } from '../store'
+import { removeStudent } from '../store'
 
 function AllStudents(props) {
   const students = props.students
@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
     deleteStudent(event, id){
       event.preventDefault();
       dispatch(removeStudent(id))
-      dispatch(fetchStudents())
     }
   }
 }

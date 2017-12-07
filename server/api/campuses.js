@@ -49,6 +49,7 @@ router.delete('/:campusId/', (req, res, next) => {
 	Campus.destroy({where: {
 		id
 	}, individualHooks: true })
+	.then(() => res.sendStatus(202))
 	.catch(next)
 })
 

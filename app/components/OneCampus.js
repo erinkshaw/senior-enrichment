@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { removeStudent, fetchStudents, fetchCampuses, removeCampus } from '../store'
+import { removeStudent, removeCampus } from '../store'
 
 function OneCampus(props) {
   const campusId = props.match.params.campusId
@@ -80,14 +80,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     deleteStudent(event, id) {
       event.preventDefault();
       dispatch(removeStudent(id))
-      dispatch(fetchStudents());
     },
     deleteCampus(event) {
       const id = ownProps.match.params.campusId
       event.preventDefault();
       dispatch(removeCampus(id))
-      dispatch(fetchCampuses());
-      dispatch(fetchStudents());
       ownProps.history.push(`/`)
     }
   }

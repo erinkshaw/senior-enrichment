@@ -35,7 +35,6 @@ const seed = () =>
   .then(() =>
   Promise.all(student.map(student =>
     Student.create(student)
-    // .then(student.setCampus(id()))
   )
   ));
 

@@ -11,12 +11,13 @@ import SideBar from './SideBar'
 import store, { fetchCampuses, fetchStudents } from '../store'
 
 export default class Main extends Component {
+
   componentDidMount () {
-    const campusesThunk = fetchCampuses();
-    const studentsThunk = fetchStudents();
-    store.dispatch(campusesThunk);
-    store.dispatch(studentsThunk);
+    const be = this.state
+    store.dispatch(fetchCampuses())
+    store.dispatch(fetchStudents())
   }
+
   render() {
     const be = this.state
     return (

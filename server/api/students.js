@@ -34,6 +34,7 @@ router.delete('/:studentId', (req, res, next) => {
 	const id = req.params.studentId
 	Student.destroy({where: {
 		id
-  }})
+	}})
+	.then(() => res.sendStatus(202))
   .catch(next)
 })
