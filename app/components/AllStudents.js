@@ -21,6 +21,7 @@ function AllStudents(props) {
           <tbody>
       {
         students.map( (student) => {
+          if (!student.campus.name) console.log(student.name)
           return (
             <tr key={student.id}>
               <td>

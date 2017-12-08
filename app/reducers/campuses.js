@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { deleteStudent } from '../store';
 
 //ACTION TYPES
 
@@ -47,8 +48,13 @@ export function postCampus(campus) {
 
 export function removeCampus(campusId) {
   return function thunk(dispatch) {
-    return axios.delete(`/api/campuses/${campusId}`)
-      .then( () => {
+    return axios.get(`/api/campuses/${campusId}/students`)
+      .then(res => res.data)
+      .then(students => {
+        students.forEach(student => dispatch(deleteStudent(student.id)))
+        return axios.delete(`/api/campuses/${campusId}`)
+      })
+      .then(() => {
         dispatch(deleteCampus(campusId))
       })
   }

@@ -8,7 +8,7 @@ function OneStudent(props) {
   const studentId = props.match.params.studentId
   const students = props.students
   const campuses = props.campuses
-  const findStudent = (student) => student.id == +studentId
+  const findStudent = (student) => +student.id === +studentId
   const singleStudent = students.find(findStudent)
   return (
     <div>
@@ -76,7 +76,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const studentId = ownProps.match.params.studentId
       event.preventDefault()
       dispatch(removeStudent(studentId))
-      dispatch(fetchStudents())
       ownProps.history.push('/students')
     },
     updateStudent(event) {
@@ -86,7 +85,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const campusId = event.target.houseSort.value
       event.preventDefault()
       dispatch(putStudent({ id, name, wand, campusId }))
-      dispatch(fetchStudents())
       ownProps.history.push('/students')
     }
   }

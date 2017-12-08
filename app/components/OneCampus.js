@@ -7,8 +7,8 @@ function OneCampus(props) {
   const campusId = props.match.params.campusId
   const students = props.students
   const campuses = props.campuses
-  const findCampus = (campus) => campus.id == +campusId
-  const findStudents = students.filter((student) => student.campusId == +campusId);
+  const findCampus = campus => +campus.id === +campusId
+  const findStudents = students.filter(student => +student.campusId === +campusId);
   const singleCampus = campuses.find(findCampus)
   return (
     <div>

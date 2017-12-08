@@ -7,7 +7,6 @@ const CREATE_STUDENT = 'CREATE_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
 const UPDATE_STUDENT = 'UPDATE_STUDENT'
 
-
 //ACTION CREATOR
 
 export function getStudents(students) {
@@ -21,6 +20,7 @@ export function createStudent(student) {
 }
 
 export function deleteStudent(studentId) {
+  console.log('hi deleted', studentId)
   const action = { type: DELETE_STUDENT, studentId };
   return action;
 }
@@ -51,13 +51,10 @@ export function postStudent(student) {
 }
 
 export function putStudent(student) {
-  console.log('hi in function', student)
   return function thunk(dispatch) {
-    console.log('hi in thunk', student)
     return axios.put(`/api/students/${student.id}`, student)
       .then(res => res.data)
       .then(student => {
-        console.log('hi in then', student)
         dispatch(updateStudent(student))
       })
   }
@@ -84,7 +81,7 @@ export default function reducer(state = [], action) {
       return [...state, action.student]
 
     case UPDATE_STUDENT:
-    console.log('hi in reducer', action.student)
+    console.log(action.student)
       return [...state.filter(student => student.id !== action.student.id), action.student]
 
     default:
