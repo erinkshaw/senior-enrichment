@@ -51,15 +51,17 @@ export function postStudent(student) {
 }
 
 export function putStudent(student) {
+  console.log('hi in function', student)
   return function thunk(dispatch) {
+    console.log('hi in thunk', student)
     return axios.put(`/api/students/${student.id}`, student)
       .then(res => res.data)
       .then(student => {
+        console.log('hi in then', student)
         dispatch(updateStudent(student))
       })
   }
 }
-
 
 export function removeStudent(studentId) {
   return function thunk(dispatch) {
@@ -82,7 +84,8 @@ export default function reducer(state = [], action) {
       return [...state, action.student]
 
     case UPDATE_STUDENT:
-      return [state.filter(student => student.id !== action.id), action.student]
+    console.log('hi in reducer', action.student)
+      return [...state.filter(student => student.id !== action.student.id), action.student]
 
     default:
       return state

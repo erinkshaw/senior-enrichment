@@ -26,7 +26,7 @@ router.put('/:studentId', (req, res, next) => {
 	const id = req.params.studentId
 	Student.findById(id)
 	.then((student) => student.update(req.body))
-  .then(console.log('update successful'))
+  .then((student) => res.status(202).send(student))
   .catch(next)
 })
 
