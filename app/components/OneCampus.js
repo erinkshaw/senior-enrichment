@@ -16,14 +16,18 @@ function OneCampus(props) {
       <div className="one-campus">
         <div style={{ marginRight: '100px' }}>
           <table>
-            <td>
-              <img src={singleCampus && singleCampus.imgUrl} />
-            </td>
-            <td>
-              <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </td>
+            <tbody>
+              <tr>
+                <td>
+                  <img src={singleCampus && singleCampus.imgUrl} />
+                </td>
+                <td>
+                  <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         {findStudents[0] ?

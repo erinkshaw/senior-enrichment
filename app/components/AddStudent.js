@@ -12,9 +12,13 @@ function AddStudent(props) {
       <div id="addwizard">
         <form onSubmit={props.SubmitStudent}>
           <table>
-            <th>Name</th>
-            <th>Wand</th>
-            <th>House</th>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Wand</th>
+                <th>House</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
                 <td><input className="form-control" name="name" /></td>
@@ -57,9 +61,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       event.preventDefault();
       if (!name || !wand || !campusId) alert('Invalid Entry!')
       else {
-      dispatch(postStudent({ name, wand, campusId }))
-      dispatch(fetchStudents());
-      ownProps.history.push('/students')
+        dispatch(postStudent({ name, wand, campusId }))
+        dispatch(fetchStudents());
+        ownProps.history.push('/students')
       }
     }
   }

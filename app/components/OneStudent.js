@@ -36,10 +36,12 @@ class OneStudent extends Component {
             <form onSubmit={this.props.updateStudent}>
               <table>
                 <thead>
-                  <th />
-                  <th>Name</th>
-                  <th>Wand</th>
-                  <th>House</th>
+                  <tr>
+                    <th />
+                    <th>Name</th>
+                    <th>Wand</th>
+                    <th>House</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>
