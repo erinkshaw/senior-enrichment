@@ -1,68 +1,86 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { removeStudent, putStudent, fetchStudents } from '../store'
+import { removeStudent, putStudent } from '../store'
 
 
-function OneStudent(props) {
-  const studentId = props.match.params.studentId
-  const students = props.students
-  const campuses = props.campuses
-  const findStudent = (student) => +student.id === +studentId
-  const singleStudent = students.find(findStudent)
-  return (
-    <div>
+class OneStudent extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      students: this.props.students || [],
+      campuses: this.props.campuses || []
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ students: nextProps.students, campuses: nextProps.campuses })
+  }
+
+  render() {
+    const studentId = this.props.match.params.studentId
+    const students = this.state.students
+    const campuses = this.state.campuses
+    const findStudent = (student) => +student.id === +studentId
+    const singleStudent = students.find(findStudent)
+    console.log(this.state, 'this dot state')
+    console.log(singleStudent, 'single student')
+    return (
+      <div>
         <h3>Edit Vizard</h3>
-    <div className="one-student">
-      <NavLink to={`/campuses/${singleStudent.campus.id}`}>
-        <img src={singleStudent && singleStudent.campus.imgUrl} />
-      </NavLink>
-      <div id="edit-student">
-        <form onSubmit={props.updateStudent}>
-          <table>
-            <thead>
-              <th />
-              <th>Name</th>
-              <th>Wand</th>
-              <th>House</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <button type="button" className="close" aria-label="Close" onClick={props.deleteStudent}>
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </td>
-                <td>
-                  <input className="form-control" defaultValue={singleStudent && singleStudent.name} name="name" />
-                </td>
-                <td style={{ width: '250px' }}>
-                  <input
-                    className="form-control"
-                    defaultValue={singleStudent && singleStudent.wand} name="wand" />
-                </td>
-                <td>
-                  <select className="form-control houseSelect" name="houseSort" >
-                    <option defaultValue value={singleStudent.campus.id}>{singleStudent && singleStudent.campus.name}</option>
-                    {campuses.map(campus => {
-                      if (singleStudent && campus.name !== singleStudent.campus.name) {
-                        return <option key={campus.id} value={campus.id}>{campus.name}</option>
-                      }
-                    })}
-                  </select>
-                </td>
-                <td>
-                  <button type="submit" className="btn btn-outline-danger"> Submit</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
+        <div className="one-student">
+          {singleStudent && <NavLink to={`/campuses/${singleStudent.campus.id}`}>
+            <img src={singleStudent.campus.imgUrl} />
+          </NavLink>}
+          <div id="edit-student">
+            <form onSubmit={this.props.updateStudent}>
+              <table>
+                <thead>
+                  <th />
+                  <th>Name</th>
+                  <th>Wand</th>
+                  <th>House</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <button type="button" className="close" aria-label="Close" onClick={this.props.deleteStudent}>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </td>
+                    <td>
+                      {singleStudent && <input className="form-control" defaultValue={singleStudent.name} name="name" />}
+                    </td>
+                    <td style={{ width: '250px' }}>
+                      {singleStudent && <input
+                        className="form-control"
+                        defaultValue={singleStudent.wand} name="wand" />}
+                    </td>
+                    <td>
+                      <select className="form-control houseSelect" name="houseSort" >
+                        {singleStudent && <option defaultValue value={singleStudent.campus.id}>{singleStudent.campus.name}</option>}
+                        {campuses.length && campuses.map(campus => {
+                          if (singleStudent && campus.name !== singleStudent.campus.name) {
+                            return <option key={campus.id} value={campus.id}>{campus.name}</option>
+                          }
+                        })}
+                      </select>
+                    </td>
+                    <td>
+                      <button type="submit" className="btn btn-outline-danger"> Submit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-  )
+    )
+  }
 }
+
 const mapStateToProps = function (state) {
   return {
     campuses: state.campuses,

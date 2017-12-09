@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import AllStudents from './AllStudents'
 import { postStudent, fetchStudents } from '../store'
 
 
@@ -13,11 +12,9 @@ function AddStudent(props) {
       <div id="addwizard">
           <form onSubmit={props.SubmitStudent}>
       <table>
-        <thead>
           <th>Name</th>
           <th>Wand</th>
           <th>House</th>
-        </thead>
         <tbody>
           <tr>
             <td><input className="form-control" name="name" /></td>

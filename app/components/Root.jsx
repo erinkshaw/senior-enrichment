@@ -26,12 +26,11 @@ export default class Main extends Component {
             <NavBar />
               <Switch>
                 <Route exact path="/students" component={AllStudents} />
-                <Route exact path="/" component={AllCampuses} />
                 <Route path="/campuses/:campusId" component={OneCampus} />
-                <Route exact path="/campuses" component={AllCampuses} />
                 <Route path="/students/:studentId" component={OneStudent} />
                 <Route path="/AddStudent" component={AddStudent} />
                 <Route path="/AddCampus" component={AddCampus} />
+                <Route path="/" component={AllCampuses} />
               </Switch>
             <SideBar />
         </div>
