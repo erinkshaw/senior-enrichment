@@ -24,8 +24,7 @@ class OneStudent extends Component {
     const campuses = this.state.campuses
     const findStudent = (student) => +student.id === +studentId
     const singleStudent = students.find(findStudent)
-    console.log(this.state, 'this dot state')
-    console.log(singleStudent, 'single student')
+
     return (
       <div>
         <h3>Edit Vizard</h3>

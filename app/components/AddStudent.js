@@ -10,41 +10,39 @@ function AddStudent(props) {
     <div >
       <h3>Add Vizard</h3>
       <div id="addwizard">
-          <form onSubmit={props.SubmitStudent}>
-      <table>
-          <th>Name</th>
-          <th>Wand</th>
-          <th>House</th>
-        <tbody>
-          <tr>
-            <td><input className="form-control" name="name" /></td>
-            <td><input className="form-control" name="wand" /></td>
-            <td>
-              <select name="houseSort" className="form-control" >
-          {/* fix so that they cant submit this */}
-          <option defaultValue>The sorting hat says...</option>
-          {campuses.map((campus => {
-            return (
-              <option key={campus.id} value={campus.id}>{campus.name}</option>
-            )
-          })
-          )}
-        </select>
-            </td>
-            <td>
-              <button type="submit" className="btn btn-outline-danger">Submit</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-          </form>
-          </div>
+        <form onSubmit={props.SubmitStudent}>
+          <table>
+            <th>Name</th>
+            <th>Wand</th>
+            <th>House</th>
+            <tbody>
+              <tr>
+                <td><input className="form-control" name="name" /></td>
+                <td><input className="form-control" name="wand" /></td>
+                <td>
+                  <select name="houseSort" className="form-control" >
+                    <option defaultValue>The sorting hat says...</option>
+                    {campuses.map((campus => {
+                      return (
+                        <option key={campus.id} value={campus.id}>{campus.name}</option>
+                      )
+                    })
+                    )}
+                  </select>
+                </td>
+                <td>
+                  <button type="submit" className="btn btn-outline-danger">Submit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
     </div>
-    // </footer>
   )
 }
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
   return {
     campuses: state.campuses
   }
@@ -52,14 +50,17 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    SubmitStudent(event){
+    SubmitStudent(event) {
       const name = event.target.name.value
       const wand = event.target.wand.value
       const campusId = event.target.houseSort.value
       event.preventDefault();
-      dispatch(postStudent({name, wand, campusId}))
+      if (!name || !wand || !campusId) alert('Invalid Entry!')
+      else {
+      dispatch(postStudent({ name, wand, campusId }))
       dispatch(fetchStudents());
       ownProps.history.push('/students')
+      }
     }
   }
 }
