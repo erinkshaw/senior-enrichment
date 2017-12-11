@@ -1,7 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
 import { connect } from 'react-redux'
-import { postStudent, fetchStudents } from '../store'
+import { postStudent } from '../store'
 
 
 function AddStudent(props) {
@@ -62,7 +61,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       if (!name || !wand || !campusId) alert('Invalid Entry!')
       else {
         dispatch(postStudent({ name, wand, campusId }))
-        dispatch(fetchStudents());
         ownProps.history.push('/students')
       }
     }

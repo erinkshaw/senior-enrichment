@@ -20,7 +20,6 @@ export function createStudent(student) {
 }
 
 export function deleteStudent(studentId) {
-  console.log('hi deleted', studentId)
   const action = { type: DELETE_STUDENT, studentId };
   return action;
 }
@@ -45,6 +44,7 @@ export function postStudent(student) {
     return axios.post('/api/students', student)
       .then(res => res.data)
       .then(student => {
+        console.log(student, '<---it is the student here!!!')
         dispatch(createStudent(student))
       })
   }

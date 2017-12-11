@@ -10,12 +10,14 @@ function AllStudents(props) {
     <div style={{ marginTop: '50px' }}>
       <h3>Vizards</h3>
       <table>
+        <thead>
         <tr>
           <th />
           <th>Name</th>
           <th>Wand</th>
           <th>House</th>
         </tr>
+        </thead>
         <tbody>
           {
             students.map((student) => {
