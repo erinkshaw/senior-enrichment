@@ -19,7 +19,9 @@ function OneCampus(props) {
             <tbody>
               <tr>
                 <td>
-                  <img src={singleCampus && singleCampus.imgUrl} />
+                  <img
+                    className="single-house"
+                    src={singleCampus && singleCampus.imgUrl} />
                 </td>
                 <td>
                   <button type="button" id="deleteCampus" className="close" aria-label="Close" onClick={() => props.deleteCampus(event, singleCampus.id)} >

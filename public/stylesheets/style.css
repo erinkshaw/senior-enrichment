@@ -57,6 +57,10 @@ table {
   margin-bottom: -10px
 }
 
+.single-house {
+  height: 250px
+}
+
 .school-header {
   display: flex;
   justify-content: space-around;

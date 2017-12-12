@@ -1,8 +1,7 @@
 
 import React from 'react'
-//dont need this yet
-import { withRouter, NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 function AllCampuses(props) {
   const campuses = props.campuses
@@ -24,7 +23,7 @@ function AllCampuses(props) {
 const mapStateToProps = function (state) {
   return {
     campuses: state.campuses
-  };
-};
+  }
+}
 
 export default connect(mapStateToProps)(AllCampuses);

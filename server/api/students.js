@@ -18,7 +18,8 @@ router.get('/:studentId', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 	Student.create(req.body)
-		.then(student => res.json(student))
+		.then(student => Student.findById(student.id))
+		.then(student => res.send(student).status(201))
 		.catch(next)
 })
 
